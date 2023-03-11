@@ -1,6 +1,7 @@
 const routes = require("express").Router();
-const TaskController = require("../controller/taskContoller");
+const TaskController = require("../controller/TaskContoller"); //importando a pasta
 
-routes.get("/home", TaskController.getAll);
+routes.get("/", TaskController.getAllTasks);
+routes.post("/create", TaskController.createTask);
 
 module.exports = routes;
