@@ -1,5 +1,5 @@
 const closeMessage = document.querySelector("#close-message");
-const message = documet.querySelector(".message");
+const message = document.querySelector(".message");
 
 closeMessage.addEventListener("click", () => {
   message.style.display = "none";
@@ -8,5 +8,3 @@ closeMessage.addEventListener("click", () => {
 setTimeout(() => {
   message.style.display = "none";
 }, 5000);
-
-alert("oi");
