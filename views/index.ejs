@@ -9,7 +9,15 @@
     <title>To Do List</title>
 </head>
 <body>
-  
+
+  <% if(message != "") {%>
+   <section class="message message-<%= type %>">
+    <p><%= message %></p>
+    <span id="close-message"><i class="bi bi-x-circle"></i></span>
+  </section>
+   <% } %>
+
+
   <header>
     <% if (task == null){ %>
       <h1>Lista de tarefas
@@ -71,6 +79,6 @@
 
 
 
-  <script src="script.js"></script>
+  <script src="/public/script.js"></script>
 </body>
 </html>

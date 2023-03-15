@@ -28,6 +28,9 @@ header h1 {
 
 }
 
+
+
+
 input {
     margin: 0;
     border-style: solid;
@@ -77,8 +80,6 @@ ul li {
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    font-family: Roboto, Arial;
-
    
 }
 
@@ -232,43 +233,4 @@ div#btns a#btnYes{
 
 div#btns a#btnYes:hover {
     background-color: #0a5324 ;
-}
-
-.message {
-    padding: 1rem;
-    position: sticky;
-    top: 0;
-    z-index: 9999;
-    text-align: center;
-    font-size: 1.1rem;
-    font-weight: 600;
-    width: auto;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-family: Roboto, Arial;
-    font-size: 1rem;
-
-}
-
-.message-danger{
-    background-color: rgb(255,197,197);
-    color: #8a0000;
-}
-
-.message-sucess{
-    background-color: rgb(197,255,214);
-    color: #008a1e
-}
-
-span#close-message{
-    font-size: 1rem;
-    cursor: pointer;
-    transition: .3s;
-    padding-left: 2rem;
-}
-
-span#close-message:hover{
-    font-size: 1.5rem;
 }
