@@ -11,29 +11,19 @@
 <body>
 
   <% if(message != "") {%>
-   <section class="message message-<%= type %>">
-    <p><%= message %></p>
-    <span id="close-message"><i class="bi bi-x-circle"></i></span>
-  </section>
+    <% if (message != "") {%>
+      <%- include('./components/messages', {message: message, type: type})  %>
+  <% } %>
    <% } %>
 
 
   <header>
-    <% if (task == null){ %>
-      <h1>Lista de tarefas
-      <i class="bi bi-card-checklist"></i>
-      </h1>
-      <form action="/create" method="post">
-      <input type="text" name="task" id="task" placeholder="Insira uma tarefa">
-      <button id="addButton" type="submit">Adicionar</button>
-    </form>
-    <% } else { %>
-    <h1>Editar tarefa</h1>
-    <form action="/updateOne/<%= task._id %>" method="post">
-      <input type="text" name="task" id="task" value="<%= task.task %>">
-      <button id="UpdateButton" type="submit">Atualizar</button>
-    </form>
-    <% } %>
+    <% if (task==null) { %>
+      <%- include('./components/form', {titleForm: "Lista de tarefas", action: "create", value: "", idBtn: "addButton", nameBtn: "Adicionar"})%>
+  <% } else { %>
+      <%- include('./components/form', {titleForm: "Editar tarfa", action: `updateOne/${task._id}`, value: task.task, idBtn: "updateButton", nameBtn: "Atualizar"}) %>
+  <% } %>
+
   </header>
 
 
@@ -55,26 +45,8 @@
   </ul>
 </section>
 
-<% if (taskDelete != null) { %>
-
-<section id="modal">
-  <div id="card">
-    <div id="head">
-      <h2>Confirmação</h2>
-      <a id="close" href="/"><i class="bi bi-x-circle"></i></a>
-    
-    </div>
-  <hr>
-    <p>Deseja  realmente apagar a tarefa:<%= taskDelete.task %>? </p>
-    <div id="btns">
-      <a id="btnNot" href="/">Não</a>
-      <a id="btnYes"href="/deleteOne/<%= taskDelete._id %>">Sim</a>
-    </div>
-
-  </div>
-
-</section>
-
+<% if (taskDelete !=null) { %>
+  <%- include('./components/modalDel', {task: taskDelete})  %>
 <% } %>
 
 

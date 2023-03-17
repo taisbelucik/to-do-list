@@ -269,7 +269,7 @@
   ul li a.check-true::before{
     content: "";
     position: absolute;
-    border: #fff solid;
+    border: #33d048 solid;
     top: 17px;
     left: 16px;
     height: 15px;
