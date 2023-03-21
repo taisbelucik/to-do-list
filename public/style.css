@@ -36,7 +36,7 @@
     padding: 0.6rem;
     font-size: 1rem;
     outline: none;
-    background-color: #202024;
+    background-color: #3a3a42;
     color: #fff;
   }
   
@@ -52,10 +52,11 @@
     border: none;
     outline: none;
     transition: all 0.3s ease-in-out;
+    font-family: Raleway, Arial;
   }
   
   button:hover {
-    background-color: #004e14;
+    background-color: #004e49;
     color: #fff;
   }
   

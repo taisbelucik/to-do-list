@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const connectToDb = () => {
   mongoose
     .connect(
-      "mongodb+srv://tais:tais@cluster0.kqazaau.mongodb.net/?retryWrites=true&w=majority",
+      process.env.DB_URI,
       {
         //evita erros de conexão
         useNewUrlParser: true,

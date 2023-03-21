@@ -21,7 +21,7 @@
     <% if (task==null) { %>
       <%- include('./components/form', {titleForm: "Lista de tarefas", action: "create", value: "", idBtn: "addButton", nameBtn: "Adicionar"})%>
   <% } else { %>
-      <%- include('./components/form', {titleForm: "Editar tarfa", action: `updateOne/${task._id}`, value: task.task, idBtn: "updateButton", nameBtn: "Atualizar"}) %>
+      <%- include('./components/form', {titleForm: "Editar tarefa", action: `updateOne/${task._id}`, value: task.task, idBtn: "updateButton", nameBtn: "Atualizar"}) %>
   <% } %>
 
   </header>
