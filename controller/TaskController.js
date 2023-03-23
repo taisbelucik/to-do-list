@@ -5,13 +5,16 @@ const Task = require("../models/Task");
 let message = "";
 let type = "";
 
+
 const getAllTasks = async (req, res) => {
   try {
     setTimeout(() => {
       message = "";
     }, 1000);
-    const tasksList = await Task.find();
+    const tasksList = await Task.find(); //espera encontrar a lista no bando de dados
+
     return res.render("index", {
+      // quando voltar com os dados mostre na tela
       tasksList,
       task: null,
       taskDelete: null,
@@ -23,6 +26,7 @@ const getAllTasks = async (req, res) => {
   }
 };
 
+//CRIA A TAREFA
 const createTask = async (req, res) => {
   const task = req.body;
 
@@ -44,11 +48,12 @@ const createTask = async (req, res) => {
   }
 };
 
+//ANTES DE EDITAR E DELETAR É PRECISO SABER QUAL O ID EU QUERO FAZER ISSO
 const getById = async (req, res) => {
   try {
-    const tasksList = await Task.find();
+    const tasksList = await Task.find(); //busca as tarefas
     if (req.params.method == "update") {
-      const task = await Task.findOne({ _id: req.params.id });
+      const task = await Task.findOne({ _id: req.params.id });//recebe um id como parâmetro
       res.render("index", { task, taskDelete: null, tasksList, message, type });
     } else {
       const taskDelete = await Task.findOne({ _id: req.params.id });
@@ -59,6 +64,7 @@ const getById = async (req, res) => {
   }
 };
 
+//EDITAR TAREFA
 const updateOneTask = async (req, res) => {
   try {
     const task = req.body;
@@ -71,6 +77,7 @@ const updateOneTask = async (req, res) => {
   }
 };
 
+//EXCLUIR TAREFA
 const deleteOneTask = async (req, res) => {
   const id = req.params.id;
 
@@ -84,6 +91,7 @@ const deleteOneTask = async (req, res) => {
   }
 };
 
+//CHECK TAREFA
 const taskCheck = async (req, res) => {
   try {
     const task = await Task.findOne({ _id: req.params.id });

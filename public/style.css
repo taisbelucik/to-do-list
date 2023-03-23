@@ -245,7 +245,7 @@
     color: #8a0000;
   }
   
-  .message-success {
+  .message-sucess {
     background-color: rgb(197, 255, 214);
     color: #008a1e;
   }
@@ -288,4 +288,32 @@
     height: 13px;
     width: 13px;
     border-width: 2px;
+  }
+
+  @media screen and (max-width: 480px) {
+    h1{
+      font-size: 1.5rem;
+    }
+    input{
+      width: 100%;
+    }
+    button {
+      width: 40%;
+    }
+    ul li a {
+      font-size: 1rem;
+      
+      
+    }
+    ul li div {
+      height: 3rem;
+      align-items: center; 
+      flex-wrap: unset; 
+      
+    }
+    ul li span{
+      display: block;
+    }
+  
+
   }
