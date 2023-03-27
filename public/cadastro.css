@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&family=Roboto:wght@100;300&display=swap');
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Roboto, Arial;
+  }
+
+  body {
+   background-color: #202024;
+   color: #fff;
+  }
+
+  .title{
+   margin-top: 30px;
+  }
+
+  .container {
+   display: flex;
+   justify-content: center;
+   width: 100%;
+   margin-top: 100px;
+
+  }
+
+  .card{
+   background-color: #f2930f;
+   padding: 60px;
+   border-radius: 4%;
+   box-shadow: 3px 3px 1px 0px #00000080;
+  }
+
+  h1 {
+   text-align: center;
+   margin-bottom: 20px;
+  }
+
+ .label-float input{
+   width: 100%;
+   padding: 5px 5px;
+   display: inline-block;
+   border: 0;
+   border-bottom: 2px solid;
+   background-color: transparent;
+   outline: none;
+   min-width: 180px;
+   font-size: 16px;
+   transition: all .3s ease-out;
+   border-radius: 0;
+   margin-top: 30px;
+  }
+
+  .label-float {
+   position: relative;
+   margin-top: 5%;
+   margin-bottom: 5% ;
+  }
+
+  .label-float input:focus {
+   border-bottom: 2px solid #3b3b3b ;
+  }
+
+  .label-float label {
+  color: #3b3b3b;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 13px;
+  transition: all .3s ease-out ;
+  }
+
+  .label-float input:focus + label{
+   font-size: 13px;
+   margin-top: 0;
+   color: #3b3b3b;
+
+  }
+
+  button {
+   background-color: transparent;
+   padding: 7px;
+   font-weight: bold;
+   font-size: 12pt;
+   margin-top: 20px;
+   border-radius: 4px;
+   cursor: pointer;
+   outline: none;
+  
+  }
+
+  button:hover{
+   background-color: #414044;
+   color: #fff;
+   transition: all .4s ease-out ;
+   }
+
+   .justify-center {
+      display: flex;
+      justify-content: center;
+   }
+
+   hr {
+   margin-top: 10%;
+   margin-bottom: 10%;
+   width: 60%;
+   }
+
+   p {
+      color: #201f1f;;
+      font-size: 14pt;
+      text-align: center;
+   }
+
+   a {
+      color: #3b3b3b;
+      font-weight: bold;
+      text-decoration: none;
+      transition: all .4s ease-out
+   }
+
+   a:hover{
+      color: #201f1f;
+      
+   }
+  
+
+
+
