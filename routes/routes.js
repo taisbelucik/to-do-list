@@ -11,5 +11,6 @@ routes.get("/deleteOne/:id/", TaskController.deleteOneTask);
 routes.get("/check/:id/", TaskController.taskCheck);
 routes.get("/login", LoginController.getLogin);
 routes.get("/cadastro", CadastroController.getCadastro);
-
-module.exports = routes;
+routes.post("/criarcadastro", CadastroController.createCadastro);
+routes.get("/findUsuario", CadastroController.findUsuario),
+  (module.exports = routes);
