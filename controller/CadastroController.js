@@ -4,7 +4,10 @@ let message = "";
 let type = "";
 
 const getCadastro = async (req, res) => {
-  return res.render("cadastro");
+  return res.render("cadastro", {
+    message,
+    type,
+  });
 };
 
 //CRIA CADASTRO
@@ -40,8 +43,8 @@ const createCadastro = async (req, res) => {
   } else {
     try {
       await Cadastro.create(cadastro); // espera o cadastro ser criado
-      message = "Cadastro criado com sucesso";
-      type = "sucess";
+      // message = "Cadastro criado com sucesso";
+      // type = "sucess";
       return res.redirect("login");
     } catch (err) {
       res.status(500).send({ error: err.message });

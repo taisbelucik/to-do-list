@@ -126,6 +126,31 @@
       color: #201f1f;
       
    }
+
+   .message {
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 9999;
+      text-align: center;
+      font-size: 1.1rem;
+      font-weight: 600;
+      width: auto;
+    
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .message-danger{
+      background-color: rgb(255,197, 197);
+      color: #8a0000;
+    }
+    
+    .message-sucess {
+      background-color: rgb(197, 255, 214);
+      color: #008a1e;
+    }
   
 
 

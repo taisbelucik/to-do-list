@@ -9,6 +9,9 @@
     </head>
     
     <body>
+        <% if (message != "") {%>
+            <%- include('./components/messages', {message: message, type: type})  %>
+        <% } %>
         <header>
             <h1 class="title">Cadastre-se e comece a usar a lista de tarefas</h1>
         </header>
@@ -38,6 +41,8 @@
                     </div>
             </div>
             </form>
+            
+            <script src="/script.js"></script>
     
     </body>
     

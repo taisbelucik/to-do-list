@@ -8,6 +8,9 @@
 <link rel="stylesheet" href="/login.css">
 </head>
 <body>
+     <% if (message != "") {%>
+        <%- include('./components/messages', {message: message, type: type})  %>
+    <% } %> 
     <header>
         <h1 class="title">Lista de tarefas</h1>
     </header>
@@ -15,27 +18,28 @@
         <div class="card">
             <h1>Entrar</h1>
         
-
+    <form action="/verificaUsuario" method="post">
     <div class="label-float">
-        <input type="text" id="usuario" placeholder="">
+        <input type="text" id="usuario" name="usuario" placeholder="">
         <label for="usuario">Usuário</label>
     </div>
 
     <div class="label-float">
-        <input type="password" id="senha" placeholder="">
+        <input type="password" id="senha" name="senha" placeholder="">
         <label for="senha">Senha</label>
     </div>
 
     <div class="justify-center">
-        <button>Entrar</button>
+        <button type="submit">Login</button>
     </div>
 
     <div class="justify-center">
         <hr>
     </div>
+    </form>
 
     <p>Ainda não tem uma conta?
-    <a href="/cadastro">Cadastra-se</a>
+    <a href="/cadastro">Cadastre-se</a>
 </p>
 </div>
 </body>
