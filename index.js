@@ -4,9 +4,19 @@ const express = require("express");
 const path = require("path");
 const routes = require("./routes/routes");
 const connectToDb = require("./database/db");
+const session = require("express-session");
 
 connectToDb();
 const app = express();
+
+// Configuração do express-session
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+  })
+);
 
 const port = parseInt(process.env.PORT) || 3000;
 

@@ -5,17 +5,16 @@ const Task = require("../models/Task");
 let message = "";
 let type = "";
 
-
 const getAllTasks = async (req, res) => {
   try {
     setTimeout(() => {
       message = "";
     }, 1000);
-    const tasksList = await Task.find(); //espera encontrar a lista no bando de dados
+
+    const userTasks = await Task.find({ usuario: req.session.usuario });
 
     return res.render("index", {
-      // quando voltar com os dados mostre na tela
-      tasksList,
+      tasksList: userTasks,
       task: null,
       taskDelete: null,
       message,
@@ -28,10 +27,15 @@ const getAllTasks = async (req, res) => {
 
 //CRIA A TAREFA
 const createTask = async (req, res) => {
-  const task = req.body;
+  const taskSubmit = {
+    task: req.body.task,
+    usuario: req.session.usuario,
+  };
+  console.log(taskSubmit);
+  // console.log(taskSubmit.usuario);
 
   //se não tiver nada no campo task, recarregue a página
-  if (!task.task) {
+  if (!taskSubmit.task) {
     message = "Insira um texto, antes de adicionar a tarefa";
     type = "danger";
     return res.redirect("/");
@@ -39,7 +43,7 @@ const createTask = async (req, res) => {
 
   //tente cadastrar no banco de dados
   try {
-    await Task.create(task); // espera a tarefa ser criada
+    await Task.create(taskSubmit); // espera a tarefa ser criada
     message = "Tarefa criada com sucesso";
     type = "sucess";
     return res.redirect("/");
@@ -53,7 +57,7 @@ const getById = async (req, res) => {
   try {
     const tasksList = await Task.find(); //busca as tarefas
     if (req.params.method == "update") {
-      const task = await Task.findOne({ _id: req.params.id });//recebe um id como parâmetro
+      const task = await Task.findOne({ _id: req.params.id }); //recebe um id como parâmetro
       res.render("index", { task, taskDelete: null, tasksList, message, type });
     } else {
       const taskDelete = await Task.findOne({ _id: req.params.id });

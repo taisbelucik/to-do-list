@@ -13,6 +13,10 @@ const taskSchema = new mongoose.Schema({
     type: Date,
     default: Date.now(),
   },
+  usuario: {
+    type: String,
+    require: true,
+  },
 });
 
 module.exports = mongoose.model("Task", taskSchema);
