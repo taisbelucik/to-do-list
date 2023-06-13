@@ -12,8 +12,12 @@ const getAllTasks = async (req, res) => {
     }, 1000);
 
     const userTasks = await Task.find({ usuario: req.session.usuario });
-
+    let nomeUsuario = "";
+    if (req.session.usuario) {
+      nomeUsuario = req.session.usuario;
+    }
     return res.render("index", {
+      usuarioLogado: nomeUsuario,
       tasksList: userTasks,
       task: null,
       taskDelete: null,
@@ -55,13 +59,31 @@ const createTask = async (req, res) => {
 //ANTES DE EDITAR E DELETAR É PRECISO SABER QUAL O ID EU QUERO FAZER ISSO
 const getById = async (req, res) => {
   try {
-    const tasksList = await Task.find(); //busca as tarefas
+    const tasksList = await Task.find({ usuario: req.session.usuario });
     if (req.params.method == "update") {
       const task = await Task.findOne({ _id: req.params.id }); //recebe um id como parâmetro
-      res.render("index", { task, taskDelete: null, tasksList, message, type });
+      let nomeUsuario = "";
+      if (req.session.usuario) {
+        nomeUsuario = req.session.usuario;
+      }
+      res.render("index", {
+        usuarioLogado: nomeUsuario,
+        task,
+        taskDelete: null,
+        tasksList,
+        message,
+        type,
+      });
     } else {
       const taskDelete = await Task.findOne({ _id: req.params.id });
-      res.render("index", { task: null, taskDelete, tasksList, message, type });
+      res.render("index", {
+        usuarioLogado: nomeUsuario,
+        task: null,
+        taskDelete,
+        tasksList,
+        message,
+        type,
+      });
     }
   } catch (err) {
     res.status(500).send({ error: err.message });
@@ -71,8 +93,15 @@ const getById = async (req, res) => {
 //EDITAR TAREFA
 const updateOneTask = async (req, res) => {
   try {
-    const task = req.body;
-    await Task.updateOne({ _id: req.params.id }, task);
+    const task = {
+      task: req.body.task,
+      usuario: req.session.usuario,
+    };
+
+    await Task.updateOne(
+      { _id: req.params.id, usuario: req.session.usuario },
+      task
+    );
     message = "Tarefa editada com sucesso";
     type = "sucess";
     res.redirect("/");
@@ -109,6 +138,13 @@ const taskCheck = async (req, res) => {
   }
 };
 
+// fazer logout
+const fazerLogout = (req, res) => {
+ req.session.destroy(); // Encerra a sessão do usuário
+ res.redirect("/login"); // Redireciona para a página de login
+  
+};
+
 module.exports = {
   getAllTasks,
   createTask,
@@ -116,4 +152,5 @@ module.exports = {
   updateOneTask,
   deleteOneTask,
   taskCheck,
+  fazerLogout,
 };

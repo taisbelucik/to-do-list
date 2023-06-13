@@ -13,6 +13,7 @@ routes.get("/login", LoginController.getLogin);
 routes.get("/cadastro", CadastroController.getCadastro);
 routes.post("/criarcadastro", CadastroController.createCadastro);
 routes.get("/findUsuario", CadastroController.findUsuario),
-  routes.get("/login", LoginController.getLogin);
+routes.get("/login", LoginController.getLogin);
 routes.post("/verificaUsuario", LoginController.verificaUsuario),
-  (module.exports = routes);
+routes.get("/logout", TaskController.fazerLogout);
+module.exports = routes;
