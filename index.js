@@ -4,17 +4,20 @@ const express = require("express");
 const path = require("path");
 const routes = require("./routes/routes");
 const connectToDb = require("./database/db");
-const session = require("express-session");
+const cookieSession = require("cookie-session");
 
 connectToDb();
 const app = express();
 
 // Configuração do express-session
 app.use(
-  session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: true,
+  cookieSession({
+    name: "session",
+    keys: [process.env.SESSION_SECRET],
+    maxAge: 24 * 60 * 60 * 1000, // 24 horas
+    secure: true, // Defina como 'true' se estiver usando HTTPS
+    httpOnly: true,
+    sameSite: "strict",
   })
 );
 
