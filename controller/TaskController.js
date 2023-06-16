@@ -58,7 +58,6 @@ const createTask = async (req, res) => {
 
 //ANTES DE EDITAR E DELETAR É PRECISO SABER QUAL O ID EU QUERO FAZER ISSO
 const getById = async (req, res) => {
-  console.log("chegou aqui");
   let nomeUsuario = "";
   if (req.session.usuario) {
     nomeUsuario = req.session.usuario;
@@ -66,7 +65,6 @@ const getById = async (req, res) => {
   try {
     const tasksList = await Task.find({ usuario: req.session.usuario });
     if (req.params.method == "update") {
-      console.log("chegou aqui update");
       const task = await Task.findOne({ _id: req.params.id }); //recebe um id como parâmetro
 
       res.render("index", {

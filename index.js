@@ -15,7 +15,7 @@ app.use(
     name: "session",
     keys: [process.env.SESSION_SECRET],
     maxAge: 24 * 60 * 60 * 1000, // 24 horas
-    secure: true, // Defina como 'true' se estiver usando HTTPS
+    secure: false, // Defina como 'true' se estiver usando HTTPS
     httpOnly: true,
     sameSite: "strict",
   })
